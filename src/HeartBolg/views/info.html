@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>文章_吴延博的个人博客网站</title>
+    <meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青"/>
+    <meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/base.css" rel="stylesheet">
+    <link href="/static/css/index.css" rel="stylesheet">
+    <link href="/static/css/info.css" rel="stylesheet">
+    <link href="/static/css/m.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/comment.css">
+    <script type="text/javascript" src="/static/js/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.flexText.js"></script>
+    <script src="/static/js/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/static/js/hc-sticky.js"></script>
+    <script type="text/javascript" src="/static/js/comm.js"></script>
+    <!--[if lt IE 9]>
+    <script src="/static/js/modernizr.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header class="header-navigation" id="header">
+    <nav>
+        <div class="logo"><a href="/">个人博客</a></div>
+        <h2 id="mnavh"><span class="navicon"></span></h2>
+        <ul id="starlist">
+            <li><a href="/" style="color: #555">首页</a></li>
+            <li><a href="/share">相册</a></li>
+            <li><a href="/about">关于</a></li>
+        </ul>
+    </nav>
+</header>
+<article>
+    <aside>
+        <div class="l_box">
+            <div class="search">
+                <form action="/search" method="post" name="searchform" id="searchform">
+                    <input name="body" id="keyboard" class="input_text" value="请输入关键字词"
+                           style="color: rgb(153, 153, 153);"
+                           onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}"
+                           onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
+                    <input name="Submit" class="input_submit" value="搜索" type="submit">
+                </form>
+            </div>
+            <div class="fenlei">
+                <h2>文章分类</h2>
+                <ul>
+                {{range $key,$value:=.categorys}}
+                    <li><a href="/articletype?name={{$key}}">{{$key}}({{$value}})</a></li>
+                {{end}}
+                </ul>
+            </div>
+            <div class="tuijian">
+                <h2>站长推荐</h2>
+                <ul>
+                {{range .recommends}}
+                    <li><a href="{{.Link}}">{{.Title}}</a></li>
+                {{end}}
+                </ul>
+            </div>
+            <div class="tuijian">
+                <h2>点击排行</h2>
+                <ul>
+                {{range .rclicks}}
+                    <li><a href="{{.Link}}">{{.Title}}</a></li>
+                {{end}}
+                </ul>
+            </div>
+            <div class="cloud">
+                <h2>标签云</h2>
+                <ul>
+                {{range .tags}}
+                    <a href="/tagcloud?tag={{.Lable}}">{{.Lable}}</a>
+                {{end}}
+                </ul>
+            </div>
+            <div class="guanzhu">
+                <h2>关注我 么么哒</h2>
+                <ul>
+                    <img src="/static/img/wx.jpg">
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <div class="infosbox">
+        <div class="newsview">
+            <h3 class="news_title">{{.article.Title}}</h3>
+            <div class="bloginfo">
+                <ul>
+                    <li class="author">作者：<a href="/">杨青</a></li>
+                    <li class="lmname"><a href="/">学无止境</a></li>
+                    <li class="timer">时间：{{date .article.Time "Y-m-d H:i:s"}}</li>
+                    <li class="view">{{.reader.Number}}人已阅读</li>
+                </ul>
+            </div>
+            <div class="tags"><a href="/" target="_blank">个人博客</a> &nbsp; <a href="/" target="_blank">小世界</a></div>
+            <div class="news_about"><strong>简介</strong>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。
+            </div>
+            <div class="news_con">
+            {{str2html .article.Body}}
+            </div>
+        </div>
+        <div class="share">
+            <p class="diggit"><a href="javascript:;" onclick="Praise({{.reader.Id}})">👍赞</a>(<b
+                    id="diggnum">{{.reader.Appreciate}}</b>)
+            </p>
+        </div>
+        <div class="nextinfo">
+            <p>上一篇：<a
+                    href="{{if ne .particle.Id 0}}/info?id={{.particle.Id}}{{else}}#{{end}}">{{if ne .particle.Title ""}}{{.particle.Title}}{{else}}
+                没有上一篇{{end}}</a></p>
+            <p>下一篇：<a
+                    href="{{if ne .narticle.Id 0}}/info?id={{.narticle.Id}}{{else}}#{{end}}">{{if ne .narticle.Title ""}}{{.narticle.Title}}{{else}}
+                没有下一篇{{end}}</a></p>
+        </div>
+        <div class="news_pl">
+            <h2>文章评论</h2>
+            <div class="commentAll">
+                <!--评论区域 begin-->
+                <div class="reviewArea clearfix">
+                    <form action="/comment" method="post">
+                        <input class="boder-radius" name="name" onkeyup="keyUP2(this)" placeholder=" Your name...">
+                        <input class="boder-radius" name="email" onkeyup="keyUP(this)" placeholder=" Your Email...">
+                        <input name="aid" type="hidden" value="{{.article.Id}}">
+                        <br>
+                        <textarea class="content comment-input" name="content"
+                                  placeholder="Please enter a comment&hellip;"
+                                  onkeyup="keyUP(this)"></textarea>
+                        <button type="submit" class="plBtn">评论</button>
+                    </form>
+                </div>
+                <!--评论区域 end-->
+                <!--回复区域 begin-->
+                <div class="comment-show">
+                {{range .comment}}
+                    <div class="comment-show-con clearfix">
+                        <div class="comment-show-con-img pull-left"><img src="/static/img/header-img-comment_03.png"
+                                                                         alt="">
+                        </div>
+                        <div class="comment-show-con-list pull-left clearfix">
+                            <div class="pl-text clearfix">
+                                <a href="#" class="comment-size-name">{{.Name}} : </a>
+                                <span class="my-pl-con">&nbsp;{{.Content}}</span>
+                            </div>
+                            <div class="date-dz">
+                                <div class="date-dz-right pull-right comment-pl-block">
+                                    <a href="javascript:;"
+                                       class="date-dz-pl pl-hf hf-con-block pull-left comment-time">{{date .Time "Y-m-d H:i:s"}}</a>
+                                </div>
+                            </div>
+                            <div class="hf-list-con"></div>
+                        </div>
+                    </div>
+                {{end}}
+                </div>
+                <!--回复区域 end-->
+            </div>
+        </div>
+    </div>
+</article>
+<footer>
+    <p>Design by <a href="#" target="_blank">个人博客</a> <a href="/">鲁ICP备17024279号-1</a></p>
+</footer>
+<a href="#" class="cd-top">Top</a>
+<!--textarea高度自适应-->
+<script type="text/javascript">
+    $(function () {
+        $('.content').flexText();
+    });
+</script>
+<!--textarea限制字数-->
+<script type="text/javascript">
+
+    var click = 0
+
+    function keyUP(t) {
+        var len = $(t).val().length;
+        if (len > 139) {
+            $(t).val($(t).val().substring(0, 140));
+        }
+    }
+
+    function keyUP2(t) {
+        var len = $(t).val().length;
+        if (len > 10) {
+            $(t).val($(t).val().substring(0, 11));
+        }
+    }
+
+    function Praise(id) {
+
+        if (click == 0) {
+            var data = {
+                "id": id
+            }
+            $.ajax({
+                type: "PUT",
+                url: "/praise",
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify(data),
+                success: function (data) {
+                    $("#diggnum").html(data.appreciate)
+                    click = click + 1
+                },
+                err: function (err) {
+                    console.log(err)
+                }
+            })
+        }
+
+    }
+
+</script>
+</body>
+</html>

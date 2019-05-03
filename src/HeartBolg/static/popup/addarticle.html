@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/static/layui/css/layui.css" rel="stylesheet"/>
+    <script type="application/javascript" src="/static/layui/layui.js"></script>
+    <script src="/static/js/manager/jquery-1.10.2.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">封面</label>
+    <div class="layui-upload layui-input-block">
+        <div class="layui-upload-list layui-input-block">
+            <img class="layui-upload-img" src="/static/img/1.jpg" style="width: 200px" id="demo1">
+            <p id="demoText"></p>
+        </div>
+        <div class="layui-input-inline">
+            <button type="button" class="layui-btn" id="test1">上传图片</button>
+        </div>
+    </div>
+</div>
+
+<form class="layui-form" action="">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">标题</label>
+        <div class="layui-input-inline">
+            <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">作者</label>
+        <div class="layui-input-inline">
+            <input type="text" name="author" required lay-verify="required" placeholder="请输入名字" autocomplete="off"
+                   class="layui-input">
+        </div>
+
+    </div>
+    <div class="layui-form-item layui-input-inline">
+        <label class="layui-form-label">类型</label>
+        <div class="layui-input-block">
+            <select name="category" id="selects" lay-verify="required">
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">关键字</label>
+        <div class="layui-input-inline">
+            <input type="text" name="key" required lay-verify="required" placeholder="请输入关键字" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-form-mid layui-word-aux">例如:go,java</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">文章内容</label>
+        <div class="layui-input-block">
+            <textarea id="article_body" name="body" style="display: none;"></textarea>
+        </div>
+    </div>
+    <input type="hidden" name="cover" id="cover">
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+
+
+</body>
+<script>
+    $(document).ready(function () {
+        a_type()
+    });
+
+    function a_type() {
+        $.ajax({
+            type: "get",
+            contentType: 'application/json;charset=utf-8',
+            url: "/categoryall",
+            success: function (data) {
+                jsondata = JSON.parse(data)
+                $(".ops").remove()
+                for (i = 0; i < jsondata.length; i++) {
+                    $("#selects").append(
+                            '<option class="ops"  value="' + jsondata[i].id + '">' + jsondata[i].name + '</option>'
+                    )
+                }
+            },
+            err: function (err) {
+                layer.msg("失败")
+            }
+        });
+    }
+
+    //Demo
+    layui.use(['form', 'layedit', 'upload', 'layer'], function () {
+        var form = layui.form;
+        var $ = layui.jquery, upload = layui.upload;
+
+        var layedit = layui.layedit;
+        index = layedit.build('article_body'); //建立编辑器
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#test1'
+            , url: '/cover_file'
+            , field: "cover"
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('上传失败');
+                }
+                $("#cover").val(res.cover)
+                //上传成功
+                return layer.msg('上传成功');
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+            cate = data.field.category
+            var data = {
+                "title": data.field.title,
+                "author": data.field.author,
+                "key": data.field.key,
+                "cover": data.field.cover,
+                "body": layedit.getContent(index),
+                "category": {
+                    "id": parseInt(cate),
+                    "name": ""
+                }
+            }
+            $.ajax({
+                type: "post",
+                url: "/articles",
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify(data),
+                success: function (data) {
+                    layer.msg("添加成功！")
+
+                },
+                error: function () {
+                    layer.msg("添加失败！")
+                }
+            });
+            return false
+        });
+    });
+</script>
+</html>

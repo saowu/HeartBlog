@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="/static/layui/css/layui.css" rel="stylesheet"/>
+    <script type="application/javascript" src="/static/layui/layui.js"></script>
+</head>
+<body>
+<div class="layui-form-item">
+    <label class="layui-form-label">封面</label>
+    <div class="layui-upload layui-input-block">
+        <div class="layui-upload-list layui-input-block">
+            <img class="layui-upload-img" src="/static/img/1.jpg" style="width: 200px" id="demo1">
+            <p id="demoText"></p>
+        </div>
+        <div class="layui-input-inline">
+            <button type="button" class="layui-btn" id="test1">上传图片</button>
+        </div>
+    </div>
+</div>
+
+<form class="layui-form" action="">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">标题</label>
+        <div class="layui-input-inline">
+            <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">文章内容</label>
+        <div class="layui-input-block">
+            <textarea id="article_body" style="display: none;"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script>
+    //Demo
+    layui.use(['form', 'layedit', 'upload', 'layer'], function () {
+        var form = layui.form;
+        var $ = layui.jquery, upload = layui.upload;
+
+        var layedit = layui.layedit;
+        layedit.build('article_body'); //建立编辑器
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#test1'
+            , url: '/upload/'
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('上传失败');
+                }
+                //上传成功
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

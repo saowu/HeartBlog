@@ -2,8 +2,10 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/bee" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/astaxie/beego" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/beego/bee" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/go-sql-driver/mysql" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/github.com/shiena/ansicolor" vcs="Git" />
   </component>
 </project>

@@ -19,6 +19,7 @@ mysql数据库，可选内嵌Sqlite，后台功能稍不完整，正在开发中
 
 ### 部署
 您需要安装 Go 1.1+ 以确保所有功能的正常使用。
+
 GOPATH下执行以下命令（详细参见beego官网）：
 ```
 $ go get -u github.com/astaxie/beego  

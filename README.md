@@ -2,7 +2,13 @@
 
 这是一个使用beego框架开发的博客系统。
 
-HeartBlog前端展示页面使用beego自带的模板语法+html渲染，数据库采用mysql，主框架为beego，后台页面用layui构建。
+前台页面：go模板语法+html
+后台页面：layui
+数据库：mysql
+主框架：beego
+
+
+
 
 您需要安装 Go 1.1+ 以确保所有功能的正常使用。
 

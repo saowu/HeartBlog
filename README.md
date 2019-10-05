@@ -7,6 +7,9 @@
 数据库：mysql
 主框架：beego
 
+HearBlog设计简洁，界面美观,部署简单
+mysql数据库，可选内嵌 Sqlite，后台功能稍不完整，正在开发中...
+
 
 
 

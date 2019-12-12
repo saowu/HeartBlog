@@ -12,9 +12,8 @@
 
 ·主框架：beego
 ### 介绍
-HearBlog设计简洁，界面美观,部署简单，
+HearBlog设计简洁，界面美观,部署简单，自动建表，
 mysql数据库，可选内嵌Sqlite，后台功能稍不完整，正在开发中...
-
 
 
 ### 部署
@@ -26,3 +25,16 @@ $ go get -u github.com/astaxie/beego
 $ go get -u github.com/beego/bee
 $ go get -u github.com/go-sql-driver/mysql
 ```
+### UI预览
+![](https://pic.superbed.cn/item/5df20ff31f8f59f4d68e0041.png)
+![](https://pic.superbed.cn/item/5df20ff31f8f59f4d68e0046.png)
+![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfdd8.png)
+![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfdda.png)
+![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfddd.png)
+![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfddf.png)
+![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfde1.png)
+![](https://pic.superbed.cn/item/5df20fe61f8f59f4d68df7a8.png)
+![](https://pic.superbed.cn/item/5df20fe61f8f59f4d68df7aa.png)
+![](https://pic.superbed.cn/item/5df20fe61f8f59f4d68df7ac.png)
+![](https://pic.superbed.cn/item/5df20fe61f8f59f4d68df7ae.png)
+![](https://pic.superbed.cn/item/5df20fe61f8f59f4d68df7b0.png)

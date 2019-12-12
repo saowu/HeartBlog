@@ -25,6 +25,7 @@ type ArticlePageables struct {
 
 //计算总页数
 func (p *ArticlePageables) SetPageCount() int {
+
 	//初始化总页数
 	if p.TotalCount != 0 {
 		if (p.TotalCount % p.TotalNumber) == 0 {

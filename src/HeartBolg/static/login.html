@@ -1,77 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Letter - Simple Sign Up Form</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
-  <link rel="stylesheet" href="/static/css/login/font-awesome.min.css">
-  <link rel="stylesheet" href="/static/css/login/bootstrap.min.css">
-  
-  <link rel="stylesheet" href="/static/css/login/demo.css" />
-  <link rel="stylesheet" href="/static/css/login/templatemo-style.css">
-  
-  <script type="text/javascript" src="/static/js/login/modernizr.custom.86080.js"></script>
-		
-	</head>
+    <title>Login - Heard Bolg</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="/static/css/login/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/login/bootstrap.min.css">
 
-	<body>
+    <link rel="stylesheet" href="/static/css/login/demo.css"/>
+    <link rel="stylesheet" href="/static/css/login/templatemo-style.css">
 
-			<div id="particles-js"></div>
-		
-			<ul class="cb-slideshow">
-	            <li></li>
-	            <li></li>
-	            <li></li>
-	            <li></li>
-	            <li></li>
-	            <li></li>
-	        </ul>
+    <script type="text/javascript" src="/static/js/login/modernizr.custom.86080.js"></script>
 
-			<div class="container-fluid">
-				<div class="row cb-slideshow-text-container ">
-					<div class= "tm-content col-xl-6 col-sm-8 col-xs-8 ml-auto section">
-					<header class="mb-5"><h1>Letter</h1></header>
-					<P class="mb-5">A sign-up letter template with three background images shuffling by fade in out movements. Thank you for visiting our site!</P>
-					
-                    <form action="#" method="get" class="subscribe-form">
-               	    	<div class="row form-section">
+</head>
 
-							<div class="col-md-7 col-sm-7 col-xs-7">
-			                      <input name="email" type="text" class="form-control" id="contact_email" placeholder="Your Email..." required/>
-				  			</div>
-							<div class="col-md-5 col-sm-5 col-xs-5">
-								<button type="submit" class="tm-btn-subscribe" onclick="login()">Subscribe</button>
-							</div>
-						</div>
-                    </form>
-                    
-					<div class="tm-social-icons-container text-xs-center">
-	                    <a href="#" class="tm-social-link"><i class="fa fa-facebook"></i></a>
-	                    <a href="#" class="tm-social-link"><i class="fa fa-google-plus"></i></a>
-	                    <a href="#" class="tm-social-link"><i class="fa fa-twitter"></i></a>
-	                    <a href="#" class="tm-social-link"><i class="fa fa-linkedin"></i></a>
-	                </div>
+<body>
 
-					</div>
-				</div>	
-				<div class="footer-link">
-					<p>Copyright © 2018 Your Company
-                    - Design: <a rel="nofollow" href="#" target="_parent">个人博客</a></p>
-				</div>
-			</div>
+<div id="particles-js"></div>
 
-	<script type="application/javascript">
+<ul class="cb-slideshow">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row cb-slideshow-text-container ">
+        <div class="tm-content col-xl-6 col-sm-8 col-xs-8 ml-auto section">
+            <header class="mb-5"><h1>Log in</h1></header>
+            <P class="mb-5">Heard Bolg 后台管理系统</P>
+
+            <form action="#" method="get" class="subscribe-form">
+                <div class="row form-section">
+
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <input name="accound" type="text" class="form-control" id="contact_email"
+                               placeholder="Your Account..." required/>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <input name="password" type="password" class="form-control" id="contact_email"
+                               placeholder="Your Password..." required/>
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-5">
+                        <button type="submit" class="tm-btn-subscribe" onclick="login()">登录</button>
+                    </div>
+                </div>
+            </form>
+            <!--<div class="tm-social-icons-container text-xs-center">
+                <a href="#" class="tm-social-link"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="tm-social-link"><i class="fa fa-google-plus"></i></a>
+                <a href="#" class="tm-social-link"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="tm-social-link"><i class="fa fa-linkedin"></i></a>
+            </div>-->
+
+        </div>
+    </div>
+    <div class="footer-link">
+        <p>Copyright © 2018 Your Company
+            - Design: <a rel="nofollow" href="#" target="_parent">Heart Blog</a></p>
+    </div>
+</div>
+
+<script type="application/javascript">
 
 
-		function login() {
-			window.location.href="/static/manager/dashboard.html"
-        }
-	</script>
-	</body>
+    function login() {
+        window.location.href = "/static/manager/dashboard.html"
+    }
 
-	<script type="text/javascript" src="/static/js/login/particles.js"></script>
-	<script type="text/javascript" src="/static/js/login/app.js"></script>
+
+</script>
+</body>
+
+<script type="text/javascript" src="/static/js/login/particles.js"></script>
+<script type="text/javascript" src="/static/js/login/app.js"></script>
 </html>

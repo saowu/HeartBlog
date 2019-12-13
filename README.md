@@ -26,15 +26,16 @@ $ go get -u github.com/beego/bee
 $ go get -u github.com/go-sql-driver/mysql
 ```
 ### UI预览
-![](https://pic.superbed.cn/item/5df20ff31f8f59f4d68e0041.png)
-![](https://pic.superbed.cn/item/5df20ff31f8f59f4d68e0046.png)
-![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfdd8.png)
-![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfdda.png)
-![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfddd.png)
-![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfddf.png)
-![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfde1.png)
 ![](https://pic.superbed.cn/item/5df20fe61f8f59f4d68df7a8.png)
 ![](https://pic.superbed.cn/item/5df20fe61f8f59f4d68df7aa.png)
 ![](https://pic.superbed.cn/item/5df20fe61f8f59f4d68df7ac.png)
 ![](https://pic.superbed.cn/item/5df20fe61f8f59f4d68df7ae.png)
 ![](https://pic.superbed.cn/item/5df20fe61f8f59f4d68df7b0.png)
+![](https://pic3.superbed.cn/item/5df2e1cb1f8f59f4d67aa944.png)
+![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfdd8.png)
+![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfdda.png)
+![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfddd.png)
+![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfddf.png)
+![](https://pic.superbed.cn/item/5df20fed1f8f59f4d68dfde1.png)
+![](https://pic.superbed.cn/item/5df20ff31f8f59f4d68e0041.png)
+![](https://pic.superbed.cn/item/5df20ff31f8f59f4d68e0046.png)

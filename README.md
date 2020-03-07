@@ -2,6 +2,11 @@
 
 这是一个使用beego框架开发的博客系统。
 
+[![GitHub issues](https://img.shields.io/github/issues/saowu/HeartBlog.svg)](https://github.com/saowu/HeartBlog/issues)
+[![GitHub forks](https://img.shields.io/github/forks/saowu/HeartBlog.svg)](https://github.com/saowu/HeartBlog/network)
+[![GitHub stars](https://img.shields.io/github/stars/saowu/HeartBlog.svg)](https://github.com/saowu/HeartBlog/stargazers)
+[![GitHub license](https://img.shields.io/github/license/saowu/HeartBlog.svg)](https://github.com/saowu/HeartBlog)
+
 ### 采用技术
 
 ·前台页面：go模板语法+html
